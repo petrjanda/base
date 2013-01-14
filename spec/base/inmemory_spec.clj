@@ -7,12 +7,12 @@
 
 
   (describe "#set, #get"
-    (it "set return value for :foo key"
+    (it "should set key/value pair and return correct value on get"
       (let [key :foo value "bar"]
         (storage/set key value)
         (should= value (storage/get key))))
 
-    (it "shouldnt return value for :bar key"
+    (it "should return nil for key which was not created yet"
       (should= nil (storage/get :bar)))
 
     (it "should store and fetch multiple keys"
@@ -24,12 +24,12 @@
 
 
   (describe "#delete"
-    (it "should delete the :foo key"
+    (it "should delete the given key"
       (storage/set :foo "bar")
       (storage/delete :foo)
       (should= nil (storage/get :foo)))
 
-    (it "should delete only :foo key if there are others"
+    (it "should delete only given key and leave others as is"
       (storage/set :foo "bar")
       (storage/set :bar "bar")
 
@@ -40,7 +40,7 @@
 
 
   (describe "#clear"
-    (it "should clear all values"
+    (it "should clear all key/value pairs"
       (storage/set :foo "foo")
       (storage/set :bar "bar")
 
