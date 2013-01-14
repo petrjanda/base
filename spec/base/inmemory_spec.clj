@@ -8,9 +8,8 @@
 
   (describe "#set, #get"
     (it "should set key/value pair and return correct value on get"
-      (let [key :foo value "bar"]
-        (storage/set key value)
-        (should= value (storage/get key))))
+      (storage/set :foo "bar")
+      (should= "bar" (storage/get :foo)))
 
     (it "should return nil for key which was not created yet"
       (should= nil (storage/get :bar)))
