@@ -20,3 +20,6 @@
 (defn clear
   "Clear all values from the storage."
   [] (dosync (ref-set values {})))
+
+(defn create-set
+  [] true)
